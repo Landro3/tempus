@@ -1,0 +1,23 @@
+input {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding: none;
+  font-size: 1rem;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+select {
+  border: none;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.error-field {
+  color: red;
+}

@@ -1,0 +1,52 @@
+button {
+  cursor: pointer;
+  background-color: $primary;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  outline: none;
+  box-shadow: $boxShadow;
+  padding: 0.5rem 1rem;
+  transition: .2s linear;
+
+  &:hover {
+    background-color: darken($primary, 5%);
+  }
+
+  &:active {
+    background-color: darken($primary, 10%);
+  }
+}
+
+.primary-button {
+  background-color: $primary;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: $fontLight;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  box-shadow: $boxShadow;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($primary, 5%);
+  }
+
+  &:active {
+    background-color: darken($primary, 10%);
+  }
+}
+
+.cancel-button {
+  color: black;
+  background: transparent;
+
+    &:hover {
+    background-color: darken(white, 5%);
+  }
+
+  &:active {
+    background-color: darken(white, 10%);
+  }
+}

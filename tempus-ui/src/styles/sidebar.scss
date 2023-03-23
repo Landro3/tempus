@@ -1,0 +1,42 @@
+#sidebar {
+  min-width: 250px;
+  border: $primary;
+
+  #sidebar-header {
+    align-items: center;
+    display: flex;
+    font-size: 2rem;
+    margin: 1rem 0;
+    cursor: default;
+    font-weight: 600;
+  }
+  
+  #sidebar-header p {
+    margin: 0;
+    padding-left: 0.75rem;
+  }
+  
+  // #sidebar-items {}
+  
+  .sidebar-item {
+    color: black;
+    align-items: center;
+    display: flex;
+    font-size: 1.25rem;
+    padding: 1rem;
+    transition: .2s linear;
+    border-radius: 1rem;
+  
+    &:hover {
+      background-color: lighten($primary, 50%);
+    }
+  
+    &:active {
+      background-color: lighten($primary, 40%);
+    }
+  }
+  
+  .sidebar-item span {
+    margin-left: 1rem;
+  }
+}
