@@ -1,0 +1,118 @@
+service: tempus-api
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+  # - serverless-dynamodb-local
+
+provider:
+  name: aws
+  apiName: tempus-api
+  stage: dev
+  runtime: nodejs18.x
+
+functions:
+  time:
+    handler: handlers/time.handler
+    events:
+        - http:
+            path: /time
+            method: any
+  clients:
+    handler: handlers/clients.handler
+    events:
+        - http:
+            path: /clients
+            method: any
+        - http:
+            path: /clients/{id}
+            method: any
+# resources:
+#   Resources:
+#     users:
+#       Type: AWS::DynamoDB::Table
+#       Properties:
+#         TableName: users
+#         AttributeDefinitions:
+#           - AttributeName: id
+#             AttributeType: N
+#           - AttributeName: email
+#             AttributeType: S
+#         KeySchema:
+#           - AttributeName: id
+#             KeyType: HASH
+#         ProvisionedThroughput:
+#           ReadCapacityUnits: 1
+#           WriteCapacityUnits: 1
+#         GlobalSecondaryIndexes:
+#           - IndexName: email-index
+#             KeySchema:
+#             - AttributeName: email
+#               KeyType: HASH
+#             Projection:
+#               ProjectionType: 'ALL'
+#             ProvisionedThroughput:
+#               ReadCapacityUnits: 1
+#               WriteCapacityUnits: 1
+#     clients:
+#       Type: AWS::DynamoDB::Table
+#       Properties:
+#         TableName: clients
+#         AttributeDefinitions:
+#           - AttributeName: id
+#             AttributeType: N
+#           - AttributeName: userId
+#             AttributeType: N
+#         KeySchema:
+#           - AttributeName: id
+#             KeyType: HASH
+#         ProvisionedThroughput:
+#           ReadCapacityUnits: 1
+#           WriteCapacityUnits: 1
+#         GlobalSecondaryIndexes:
+#           - IndexName: user-index
+#             KeySchema:
+#             - AttributeName: userId
+#               KeyType: HASH
+#             Projection:
+#               ProjectionType: 'ALL'
+#             ProvisionedThroughput:
+#               ReadCapacityUnits: 1
+#               WriteCapacityUnits: 1
+#     time:
+#       Type: AWS::DynamoDB::Table
+#       Properties:
+#         TableName: time
+#         AttributeDefinitions:
+#           - AttributeName: id
+#             AttributeType: N
+#           - AttributeName: clientId
+#             AttributeType: N
+#         KeySchema:
+#           - AttributeName: id
+#             KeyType: HASH
+#         ProvisionedThroughput:
+#           ReadCapacityUnits: 1
+#           WriteCapacityUnits: 1
+#         GlobalSecondaryIndexes:
+#           - IndexName: client-index
+#             KeySchema:
+#             - AttributeName: clientId
+#               KeyType: HASH
+#             Projection:
+#               ProjectionType: 'ALL'
+#             ProvisionedThroughput:
+#               ReadCapacityUnits: 1
+#               WriteCapacityUnits: 1
+custom:
+  # dynamodb:
+  #   stages:
+  #     - dev
+  #   start:
+  #     migrate: true
+  serverless-offline:
+    localEnvironment: true
+    httpPort: 3123
+    reloadHandler: true
+
